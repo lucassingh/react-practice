@@ -52,6 +52,7 @@ Contraseña: 1234
 
 📁 Estructura del Proyecto
 
+```bash
 src/
 ├── assets         # Imágenes y recursos estáticos
 ├── components     # Componentes reutilizables (botones, tablas, etc.)
@@ -63,6 +64,7 @@ src/
 ├── pages          # Páginas del sitio (Login, Home, etc.)
 ├── routes         # Definición de rutas y navegación
 ├── utils          # Funciones utilitarias auxiliares
+```
 
 ### 🧠 Patrón de Arquitectura: Interface - Service - Store - Handler
 
