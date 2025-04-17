@@ -196,9 +196,24 @@ Antes de clonar el repositorio tenemos que tener instalado Node y npm en nuestra
 - Abrir una consola cmd o powershell y clonar el repositorio
 
 `bash
-   wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+  git clone https://github.com/lucassingh/react-practice.git
 `
 
+`bash
+  cd react-practice
+`
+
+`bash
+  npm install
+`
+
+`bash
+  npm run dev
+`
+
+http://localhost:5173/
+
+# Instalación desde 0 de node con NVM 
 
 # 🛠️ Instalación de Node con NVM y uso de NVM
 
