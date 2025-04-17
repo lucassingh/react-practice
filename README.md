@@ -193,8 +193,6 @@ Los datos obtenidos desde la API de la NASA se renderizan en una tabla con Mater
 
 Antes de clonar el repositorio tenemos que tener instalado Node y npm en nuestra pc. Para este caso vamos instalar Node por medio de nvm y eligiremos una version de la 18 en adelante.
 
-# Instalación desde 0 de node con NVM 
-
 # 🛠️ Instalación de Node con NVM y uso de NVM
 
 NVM (Node Version Manager) es una herramienta que permite instalar y gestionar múltiples versiones de Node.js en tu sistema. Es especialmente útil para proyectos que pueden requerir diferentes versiones de Node.
