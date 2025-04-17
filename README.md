@@ -1,5 +1,4 @@
 # Capacitación React
----
 
 ## 🛠️ Instalación de Node con NVM y uso de NVM
 
@@ -16,5 +15,10 @@ NVM (Node Version Manager) es una herramienta que permite instalar y gestionar m
 1. **Para Linux/macOS**:
    ```bash
    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-
    ```
+2. **O usando wget:**:
+   ```bash
+   wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+   ```
+2. **Para Windows:**:
+   Descargar el instalador de windows [Aquí]([https://www.ejemplo.com](https://github.com/coreybutler/nvm-windows/releases))
