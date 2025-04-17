@@ -21,4 +21,4 @@ NVM (Node Version Manager) es una herramienta que permite instalar y gestionar m
    wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
    ```
 2. **Para Windows:**:
-   Descargar el instalador de windows [Aquí]([https://www.ejemplo.com](https://github.com/coreybutler/nvm-windows/releases))
+   Descargar el instalador de windows [Aquí](https://www.ejemplo.com](https://github.com/coreybutler/nvm-windows/releases)
