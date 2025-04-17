@@ -1,52 +1,20 @@
-## 📦 Prerrequisitos
+# Capacitación React
+---
 
-- Node.js (v18+ recomendado)
-- npm (viene con Node.js) o yarn (opcional)
-- Editor de código (VS Code recomendado)
+## 🛠️ Instalación de Node con NVM y uso de NVM
 
-## 🚀 Paso 1: Instalación de Node.js
+NVM (Node Version Manager) es una herramienta que permite instalar y gestionar múltiples versiones de Node.js en tu sistema. Es especialmente útil para proyectos que pueden requerir diferentes versiones de Node.
 
-1. Descargar la versión LTS desde [nodejs.org](https://nodejs.org/)
-2. Ejecutar el instalador con configuración predeterminada
-3. Verificar instalación:
+### ¿Por qué usar NVM?
+- Permite cambiar fácilmente entre versiones de Node.js
+- Facilita la instalación de nuevas versiones
+- No requiere permisos de administrador para instalar paquetes globales
+- Aisla las versiones de Node por proyecto
 
-```bash
-node -v
-npm -v
-npm create vite@latest mi-proyecto-react -- --template react-ts
-cd mi-proyecto-react
-npm install
-npm run dev
+### Pasos para instalar NVM
 
-npm install react-router-dom @types/react-router-dom
+1. **Para Linux/macOS**:
+   ```bash
+   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 
-npm install @mui/material @emotion/react @emotion/styled @mui/icons-material
-
-import { createTheme } from '@mui/material/styles';
-
-export const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#1976d2',
-    },
-  },
-});
-
-mi-proyecto-react/
-├── node_modules/
-├── public/
-│   └── vite.svg
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── pages/
-│   │   ├── Home.tsx
-│   │   └── About.tsx
-│   ├── App.tsx
-│   ├── main.tsx
-│   └── vite-env.d.ts
-├── .gitignore
-├── index.html
-├── package.json
-├── tsconfig.json
-└── vite.config.ts
+   ```
