@@ -500,15 +500,15 @@ function MyComponent() {
 
 ### 🧩 Componentes clave
 
-| Componente         | Descripción                                 |
-|-----------------   |---------------------------------------------|
-| <BrowserRouter>    | Inicia servidor de desarrollo (localhost)   |
-| <Routes>           | Contenedor de rutas                         |
-| <Route>            | Define una ruta y su componente asociado    |
-| <Link>             | Navegación declarativa                      |
-| useNavigate()      | Navegación imperativa                       |
-| useParams()        | Accede a los parámetros dinámicos de la URL |
-| useLocation()      | Accede al objeto de ubicación               |
+| Componente           | Descripción                                 |
+|----------------------|---------------------------------------------|
+| `<BrowserRouter>`    | Inicia servidor de desarrollo (localhost)   |
+| `<Routes>`           | Contenedor de rutas                         |
+| `<Route>`            | Define una ruta y su componente asociado    |
+| `<Link>`             | Navegación declarativa                      |
+| `useNavigate()`      | Navegación imperativa                       |
+| `useParams()`        | Accede a los parámetros dinámicos de la URL |
+| `useLocation()`      | Accede al objeto de ubicación               |
 
 ### ✅ Ejemplo con rutas anidadas
 
@@ -808,13 +808,13 @@ export function SignupForm() {
 
 | Elemento/Formik      | Descripción                                       |
 |----------------------|---------------------------------------------------|
-| <Formik>             | Componente principal que encapsula el formulario  |
+| `<Formik>`           | Componente principal que encapsula el formulario  |
 | initialValues        | Objeto con los valores iniciales del formulario   |
 | onSubmit             | Función que se ejecuta al enviar el formulario    |
 | validationSchema     | Esquema Yup para validar los campos               |
-| <Form>               | Reemplazo del <form> estándar                     |
-| <Field>              | Campo de entrada conectado a Formik               |
-| <ErrorMessage>       | Muestra errores de validación automáticamente     |
+| `<Form>`             | Reemplazo del <form> estándar                     |
+| `<Field>`            | Campo de entrada conectado a Formik               |
+| `<ErrorMessage>`     | Muestra errores de validación automáticamente     |
 
 ### 🧠 Validaciones con Yup
 
