@@ -193,28 +193,6 @@ Los datos obtenidos desde la API de la NASA se renderizan en una tabla con Mater
 
 Antes de clonar el repositorio tenemos que tener instalado Node y npm en nuestra pc. Para este caso vamos instalar Node por medio de nvm y eligiremos una version de la 18 en adelante.
 
-## Levantar el proyecto
-
-- Abrir una consola cmd o powershell y clonar el repositorio
-
-`bash
-  git clone https://github.com/lucassingh/react-practice.git
-`
-
-`bash
-  cd react-practice
-`
-
-`bash
-  npm install
-`
-
-`bash
-  npm run dev
-`
-
-http://localhost:5173/
-
 # Instalación desde 0 de node con NVM 
 
 # 🛠️ Instalación de Node con NVM y uso de NVM
@@ -265,7 +243,29 @@ Después de instalar Node con NVM, verifica que todo funcione correctamente:
 `node --version`
 `npm --version`
 
-# ⚛️ Crear un proyecto React con Vite + TypeScript
+## Levantar el proyecto
+
+- Abrir una consola cmd o powershell y clonar el repositorio
+
+`bash
+  git clone https://github.com/lucassingh/react-practice.git
+`
+
+`bash
+  cd react-practice
+`
+
+`bash
+  npm install
+`
+
+`bash
+  npm run dev
+`
+
+http://localhost:5173/
+
+# ⚛️ Crear un proyecto React con Vite + TypeScript desde 0 (opcional)
 
 Documentación oficial de Vite [Aquí](https://vite.dev/)
 
