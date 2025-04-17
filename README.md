@@ -298,6 +298,7 @@ npm run dev
 
 ### 📂 Estructura de archivos generada
 
+```
 tu-proyecto/
 ├── node_modules/
 ├── public/          # Archivos estáticos
@@ -311,6 +312,7 @@ tu-proyecto/
 ├── package.json     # Dependencias y scripts
 ├── tsconfig.json    # Config TypeScript
 └── vite.config.ts   # Config Vite
+```
 
 ### 🛠️ Scripts importantes en package.json
 
