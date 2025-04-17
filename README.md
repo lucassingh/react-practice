@@ -1,6 +1,206 @@
-# Capacitación React
+# 🚀 Proyecto de Capacitación en React + TypeScript
 
-## 🛠️ Instalación de Node con NVM y uso de NVM
+Este repositorio fue creado como parte de una capacitación con **React** y **desarrollo front-end**. 
+El objetivo es aprender a crear aplicaciones modernas usando herramientas reales del ecosistema frontend.
+
+---
+
+## 🧱 Tecnologías utilizadas
+
+- ⚡️ [Vite](https://vitejs.dev/) como entorno de desarrollo rápido.
+- 💙 [React](https://reactjs.org/) con **TypeScript**.
+- 🎨 [Material UI](https://mui.com/) para componentes de UI.
+- 🧠 [Zustand](https://docs.pmnd.rs/zustand/introduction) para manejo de estado global.
+- 🌐 [Axios](https://axios-http.com/) para consumir APIs.
+- 📝 [Formik](https://formik.org/) + ✅ [Yup](https://github.com/jquense/yup) para formularios con validación.
+- 🛰️ [NASA API - Mars Rover Photos](https://api.nasa.gov/) como fuente de datos real.
+
+---
+
+## 🔑 API de la NASA
+
+Estamos utilizando la API pública de la NASA para obtener fotos del Rover Curiosity de Marte. La idea de utilizar esta API es poder observar como se trabaja con la consumisión de datos reales. 
+
+- Endpoint usado:  
+  [`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos`](https://api.nasa.gov/)
+- Documentación oficial:  
+  👉 [NASA API Docs](https://api.nasa.gov/)
+
+### Cómo obtener una API KEY
+
+1. Ir a [https://api.nasa.gov](https://api.nasa.gov)
+2. Completar el formulario con tu nombre y correo
+3. Te llegará una API Key por correo o la verás en pantalla
+
+---
+
+## 🔐 Variables de Entorno
+
+Debes crear un archivo `.env` en la raíz del proyecto con las siguientes variables:
+
+```env
+VITE_URL=https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos
+VITE_API_KEY=tu_api_key_aqui
+```
+### 🔐 Login Simulado
+
+El proyecto incluye un login simulado como práctica para formularios con validación.
+
+Usuario: admin
+
+Contraseña: 1234
+
+📁 Estructura del Proyecto
+
+src/
+├── assets         # Imágenes y recursos estáticos
+├── components     # Componentes reutilizables (botones, tablas, etc.)
+├── data           # Lógica de negocio organizada por capas
+│   ├── handlers     # Conectores entre el store y los componentes
+│   ├── interfaces   # Tipos y estructuras de datos TypeScript
+│   ├── services     # Llamadas a la API (Axios)
+│   └── store        # Gestión del estado con Zustand
+├── pages          # Páginas del sitio (Login, Home, etc.)
+├── routes         # Definición de rutas y navegación
+├── utils          # Funciones utilitarias auxiliares
+
+### 🧠 Patrón de Arquitectura: Interface - Service - Store - Handler
+
+Este patrón organiza la lógica de negocio de forma clara y escalable:
+
+1. 📐 Interfaces (interfaces/)
+   
+Define las estructuras de datos y tipos que usaremos en toda la app.
+
+```bash
+export interface MarsPhoto {
+  id: number;
+  sol: number;
+  camera: MarsCamera;
+  img_src: string;
+  earth_date: string;
+  rover: MarsRover;
+}
+```
+
+### ✅ Beneficios:
+
+- Seguridad de tipos
+
+- Autocompletado
+
+- Documentación automática
+
+- Evita errores en tiempo de compilación
+
+### 2. 🌍 Services (services/)
+
+Encapsula la comunicación con APIs externas (Axios).
+
+```bash
+export const getMarsPhotos = async (params: MarsPhotosParams) => {
+  const response = await nasaApi.get('', { params });
+  return response.data.photos;
+};
+```
+
+### ✅ Beneficios:
+
+- Aísla la lógica de red
+
+- Centraliza errores y headers
+
+- Reutilizable desde cualquier parte
+
+### 3. 📦 Store (store/)
+
+Gestiona el estado global con Zustand.
+
+```
+const useMarsPhotosStore = create<MarsPhotosState>((set) => ({
+  photos: [],
+  loading: false,
+  fetchPhotos: async () => {
+    set({ loading: true });
+    const photos = await getMarsPhotos();
+    set({ photos, loading: false });
+  }
+}));
+```
+
+### ✅ Beneficios:
+
+- Estado centralizado
+
+- No más prop drilling
+
+- Reutilización y persistencia del estado
+
+### 4. 🧩 Handler (handlers/)
+
+Conecta el store con los componentes. Ideal para mantener los componentes "tontos".
+
+```bash
+export const useMarsPhotosHandler = () => {
+  const { photos, fetchPhotos } = useMarsPhotosStore();
+  
+  useEffect(() => {
+    fetchPhotos();
+  }, []);
+
+  return { photos };
+};
+```
+
+### ✅ Beneficios:
+
+- Limpia la lógica de los componentes
+
+- Facilita testeo y mantenimiento
+
+- Permite lógica UI compleja sin ensuciar el store
+
+### 🧭 Diagrama de Flujo
+
+Componente UI → Handler → Store → Service → API Externa
+       ↑_________↓           ↑_________↓
+
+🎯 Beneficios de este patrón
+
+🔁 Reusabilidad:	Services y Stores reutilizables en toda la app
+🧹 Separación:	Cada capa tiene una responsabilidad clara
+🧪 Testeabilidad:	Fácil de testear por separado cada parte
+⚙️ Mantenibilidad:	Cambios localizados sin afectar toda la app
+🚀 Escalabilidad:	Se adapta a proyectos grandes sin perder control
+
+### 📊 Vista de Datos: Tabla
+
+Los datos obtenidos desde la API de la NASA se renderizan en una tabla con Material UI, mostrando información como:
+
+- ID de la foto
+
+- Fecha en la Tierra
+
+- Nombre del Rover
+
+- Imagen capturada
+
+![image](https://github.com/user-attachments/assets/c2bfa8a1-5f2b-4a2a-a245-25201f8d1e96)
+
+# Inicializar El proyecto 
+
+Antes de clonar el repositorio tenemos que tener instalado Node y npm en nuestra pc. Para este caso vamos instalar Node por medio de nvm y eligiremos una version de la 18 en adelante.
+
+## Levantar el proyecto
+
+- Abrir una consola cmd o powershell y clonar el repositorio
+
+`bash
+   wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+`
+
+
+# 🛠️ Instalación de Node con NVM y uso de NVM
 
 NVM (Node Version Manager) es una herramienta que permite instalar y gestionar múltiples versiones de Node.js en tu sistema. Es especialmente útil para proyectos que pueden requerir diferentes versiones de Node.
 
@@ -48,7 +248,7 @@ Después de instalar Node con NVM, verifica que todo funcione correctamente:
 `node --version`
 `npm --version`
 
-## ⚛️ Crear un proyecto React con Vite + TypeScript
+# ⚛️ Crear un proyecto React con Vite + TypeScript
 
 Documentación oficial de Vite [Aquí](https://vite.dev/)
 
@@ -128,7 +328,7 @@ http://localhost:5173
 ```
 Tip: Vite usa el puerto 5173 por defecto. Si necesitas cambiarlo, modifica vite.config.ts.
 
-## 🎨 Material UI (MUI) - Biblioteca de componentes React
+# 🎨 Material UI (MUI) - Biblioteca de componentes React
 
 [Material UI](https://mui.com/) es una de las bibliotecas de componentes UI más populares para React, implementando los principios de Material Design de Google.
 
