@@ -13,12 +13,41 @@ NVM (Node Version Manager) es una herramienta que permite instalar y gestionar m
 ### Pasos para instalar NVM
 
 1. **Para Linux/macOS**:
-   ```bash
+   `bash
    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-   ```
+   `
 2. **O usando wget:**:
-   ```bash
+   `bash
    wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-   ```
+   `
 2. **Para Windows:**:
    Descargar el instalador de windows [Aquí](https://github.com/coreybutler/nvm-windows/releases)
+
+### Comandos básicos NVM
+
+1. **Instalar una versión específica de Node**:
+
+`nvm install 18.16.0`
+
+2. **Usar una versión específica:**:
+
+`nvm use 18.16.0`
+
+3. **Listar versiones instaladas::**:
+
+`nvm ls`
+
+4. **Establecer versión por defecto:**
+
+`nvm alias default 18.16.0`
+
+###Configuración post-instalación
+
+Después de instalar Node con NVM, verifica que todo funcione correctamente:
+
+```
+   node --version
+   npm --version
+```
+
+
