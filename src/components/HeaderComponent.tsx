@@ -3,9 +3,11 @@ import { Box, Typography, Button, SxProps, Theme, Container } from '@mui/materia
 
 interface CustomHeaderProps {
     title: string;
+    subTitle?: string;
     bgColor?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' | string;
     height?: number | string;
-    colorTitle?: string
+    colorTitle?: string;
+    colorSubTitle?: string;
     buttonText?: string;
     onButtonClick?: () => void;
     showButton?: boolean;
@@ -14,6 +16,8 @@ interface CustomHeaderProps {
 
 export const HeaderComponent: React.FC<CustomHeaderProps> = ({
     title,
+    subTitle,
+    colorSubTitle,
     bgColor = 'secondary',
     height = 200,
     colorTitle = '#ffff',
@@ -23,14 +27,13 @@ export const HeaderComponent: React.FC<CustomHeaderProps> = ({
     sx = {}
 }) => {
     return (
-
         <Box
             sx={{
                 backgroundColor: bgColor,
                 height: typeof height === 'number' ? `${height}px` : height,
                 display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
+                justifyContent: 'center',
+                flexDirection: 'column',
                 px: 4,
                 ...sx
             }}
@@ -39,18 +42,50 @@ export const HeaderComponent: React.FC<CustomHeaderProps> = ({
                 sx={{
                     display: 'flex',
                     justifyContent: 'space-between',
+                    alignItems: 'center',
+                    width: '100%',
+                    position: 'relative'
                 }}
             >
-                <Typography
-                    variant="h1"
-                    component="h1"
+                <Box
                     sx={{
-                        alignSelf: 'center',
-                        color: { colorTitle },
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'flex-start',
+                        gap: 1,
+                        flexGrow: 1,
+                        maxWidth: 'calc(100% - 120px)'
                     }}
                 >
-                    {title}
-                </Typography>
+                    <Typography
+                        variant="h1"
+                        component="h1"
+                        sx={{
+                            color: colorTitle,
+                            textAlign: 'left',
+                            width: '100%'
+                        }}
+                    >
+                        {title}
+                    </Typography>
+
+                    {subTitle && (
+                        <Typography
+                            component="span"
+                            variant="body1"
+                            sx={{
+                                color: colorSubTitle,
+                                fontSize: '1rem',
+                                textAlign: 'left',
+                                marginTop: 1,
+                                width: '100%',
+                                display: 'inline-block'
+                            }}
+                        >
+                            {subTitle}
+                        </Typography>
+                    )}
+                </Box>
 
                 {showButton && (
                     <Button
@@ -58,10 +93,11 @@ export const HeaderComponent: React.FC<CustomHeaderProps> = ({
                         color="primary"
                         onClick={onButtonClick}
                         sx={{
-                            alignSelf: 'center',
                             height: 'fit-content',
                             py: 1.5,
-                            px: 3
+                            px: 3,
+                            position: 'absolute',
+                            right: 0
                         }}
                     >
                         {buttonText}

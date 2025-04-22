@@ -7,13 +7,16 @@ import {
     Toolbar,
     Typography,
     Box,
-    Stack
+    Stack,
+    Switch,
+    FormControlLabel,
 } from '@mui/material';
 import { useAuthStore } from '../data/store/authStore';
+import { useTheme } from '../context/ThemeContext';
 
 export function NavigationComponent() {
-
     const { isAuthenticated, user, logout } = useAuthStore();
+    const { darkMode, toggleTheme } = useTheme();
 
     return (
         <AppBar position="static">
@@ -31,7 +34,7 @@ export function NavigationComponent() {
                             flexGrow: { xs: 1, md: 0 }
                         }}
                     >
-                        Mars images
+                        REACT APP
                     </Typography>
 
                     <Box
@@ -57,30 +60,54 @@ export function NavigationComponent() {
                         <Button
                             color="inherit"
                             component={Link}
-                            to="/about"
+                            to="/react-basics"
                             sx={{
                                 my: 2,
                                 display: 'block',
                                 '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.08)' }
                             }}
                         >
-                            About
+                            React Basics
                         </Button>
                         <Button
                             color="inherit"
                             component={Link}
-                            to="/products"
+                            to="/react-crud"
                             sx={{
                                 my: 2,
                                 display: 'block',
                                 '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.08)' }
                             }}
                         >
-                            Products
+                            React CRUD
+                        </Button>
+                        <Button
+                            color="inherit"
+                            component={Link}
+                            to="/react-advanced"
+                            sx={{
+                                my: 2,
+                                display: 'block',
+                                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.08)' }
+                            }}
+                        >
+                            React Advanced
                         </Button>
                     </Box>
 
-                    <Box sx={{ flexGrow: 0 }}>
+                    <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center', gap: 2 }}>
+                        <FormControlLabel
+                            control={
+                                <Switch
+                                    checked={darkMode}
+                                    onChange={toggleTheme}
+                                    color="secondary"
+                                />
+                            }
+                            label={darkMode ? 'Modo Oscuro' : 'Modo Claro'}
+                            sx={{ color: 'inherit', mr: 1 }}
+                        />
+
                         {isAuthenticated ? (
                             <Stack direction="row" spacing={2} alignItems="center">
                                 <Avatar sx={{

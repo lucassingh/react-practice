@@ -1,4 +1,5 @@
 export { HomeScreen } from './auth/HomeScreen';
-export { ProductsScreen } from './auth/ProductsScreen';
-export { AboutScreen } from './auth/AboutScreen';
+export { ReactAdvancedScreen } from './auth/ReactAdvancedScreen';
+export { ReactBasicsScreen } from './auth/ReactBasicsScreen';
+export { CrudScreen } from './auth/CrudScreen.tsx';
 export { LoginScreen } from './LoginScreen';

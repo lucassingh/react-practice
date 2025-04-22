@@ -1,5 +1,5 @@
 import { RouteObject, Navigate } from 'react-router-dom'
-import { AboutScreen, HomeScreen, ProductsScreen, LoginScreen } from '../pages'
+import { CrudScreen, HomeScreen, LoginScreen, ReactAdvancedScreen, ReactBasicsScreen } from '../pages'
 import App from '../App'
 import { ReactNode } from 'react';
 import { useAuthStore } from '../data/store/authStore';
@@ -19,12 +19,16 @@ const routes: RouteObject[] = [
                 element: <ProtectedRoute><HomeScreen /></ProtectedRoute>
             },
             {
-                path: 'about',
-                element: <ProtectedRoute><AboutScreen /></ProtectedRoute>
+                path: 'react-basics',
+                element: <ProtectedRoute><ReactBasicsScreen /></ProtectedRoute>
             },
             {
-                path: 'products',
-                element: <ProtectedRoute><ProductsScreen /></ProtectedRoute>
+                path: 'react-advanced',
+                element: <ProtectedRoute><ReactAdvancedScreen /></ProtectedRoute>
+            },
+            {
+                path: 'react-crud',
+                element: <ProtectedRoute><CrudScreen /></ProtectedRoute>
             }
         ]
     },
