@@ -28,6 +28,7 @@ export const HeaderComponent: React.FC<CustomHeaderProps> = ({
 }) => {
     return (
         <Box
+            data-testid="header-box"
             sx={{
                 backgroundColor: bgColor,
                 height: typeof height === 'number' ? `${height}px` : height,

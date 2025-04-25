@@ -3,6 +3,7 @@ import { CrudScreen, HomeScreen, LoginScreen, ReactAdvancedScreen, ReactBasicsSc
 import App from '../App'
 import { ReactNode } from 'react';
 import { useAuthStore } from '../data/store/authStore';
+import { ErrorPage } from '../pages/ErrorPage';
 
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
     const { isAuthenticated } = useAuthStore();
@@ -16,7 +17,9 @@ const routes: RouteObject[] = [
         children: [
             {
                 index: true,
-                element: <ProtectedRoute><HomeScreen /></ProtectedRoute>
+                element: <ProtectedRoute>
+                    <HomeScreen />
+                </ProtectedRoute>
             },
             {
                 path: 'react-basics',
@@ -38,7 +41,7 @@ const routes: RouteObject[] = [
     },
     {
         path: '*',
-        element: <Navigate to="/" replace />
+        element: <ProtectedRoute><ErrorPage /></ProtectedRoute>
     }
 ]
 

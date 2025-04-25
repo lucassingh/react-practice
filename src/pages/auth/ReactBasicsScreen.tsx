@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { useState } from 'react';
 import {
     Box,
     Typography,
@@ -117,8 +117,13 @@ export const ReactBasicsScreen = () => {
 };
 
 const StateExample = () => {
-    const [count, setCount] = React.useState(0);
-    const [inputValue, setInputValue] = React.useState('');
+
+    const [count, setCount] = useState(0);
+    const [inputValue, setInputValue] = useState('');
+
+    const increaseValue = () => {
+        setCount(count + 1)
+    }
 
     return (
         <Box>
@@ -128,7 +133,7 @@ const StateExample = () => {
 
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
                 <Typography>Contador: {count}</Typography>
-                <Button variant="contained" onClick={() => setCount(count + 1)}>
+                <Button variant="contained" onClick={increaseValue}>
                     Incrementar
                 </Button>
                 <Button variant="outlined" onClick={() => setCount(count - 1)}>
@@ -475,5 +480,6 @@ const ApiExample = () => {
         </Box>
     );
 };
+
 
 export default ReactBasicsScreen;

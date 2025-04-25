@@ -10,7 +10,8 @@ import {
     Paper,
     Avatar,
     CssBaseline,
-    CircularProgress
+    CircularProgress,
+    Checkbox
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useAuthStore } from '../data/store/authStore';
@@ -110,6 +111,12 @@ export const LoginScreen = () => {
                             helperText={formik.touched.password && formik.errors.password}
                             disabled={isLoading}
                         />
+                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <Typography >Conservar Sesión</Typography>
+                            <Checkbox
+
+                            />
+                        </Box>
                         <Button
                             type="submit"
                             fullWidth

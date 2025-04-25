@@ -17,7 +17,12 @@ import {
     Accordion,
     AccordionSummary,
     AccordionDetails,
-    Divider
+    Divider,
+    useTheme,
+    IconButton,
+    Collapse,
+    Alert,
+    Button
 } from "@mui/material";
 import {
     Bolt as BoltIcon,
@@ -31,11 +36,75 @@ import {
     Storage as StorageIcon,
     Build as BuildIcon,
     Send as SendIcon,
-    Lock as LockIcon
+    Lock as LockIcon,
+    CheckCircleOutline,
+    ContentCopy as CopyIcon
 } from "@mui/icons-material";
 import { HeaderComponent } from "../../components";
+import { useState } from "react";
 
 export const HomeScreen = () => {
+
+    const theme = useTheme();
+    const [copiedId, setCopiedId] = useState<string | null>(null);
+    const [expanded, setExpanded] = useState<string | false>('panel1');
+
+    const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+        setExpanded(isExpanded ? panel : false);
+    };
+
+    const handleCopy = (code: string, id: string) => {
+        navigator.clipboard.writeText(code);
+        setCopiedId(id);
+        setTimeout(() => setCopiedId(null), 2000);
+    };
+
+    const codeBlocks = [
+        {
+            id: 'install',
+            title: 'Instalar dependencias',
+            description: 'Ejecuta uno de estos comandos en tu terminal:',
+            commands: [
+                {
+                    id: 'npm',
+                    language: 'bash',
+                    code: 'npm install -D vitest @vitest/coverage-v8 @testing-library/react @testing-library/jest-dom jsdom @types/node'
+                },
+                {
+                    id: 'yarn',
+                    language: 'bash',
+                    code: 'yarn add -D vitest @vitest/coverage-v8 @testing-library/react @testing-library/jest-dom jsdom @types/node'
+                }
+            ]
+        },
+        {
+            id: 'vite-config',
+            title: 'Configurar Vitest',
+            description: 'Crea o modifica el archivo vite.config.ts:',
+            commands: [
+                {
+                    id: 'vite',
+                    language: 'typescript',
+                    code: `import { defineConfig } from 'vite'
+      import react from '@vitejs/plugin-react'
+      
+      export default defineConfig({
+        plugins: [react()],
+        test: {
+          globals: true,
+          environment: 'jsdom',
+          setupFiles: './src/test/setup.ts',
+          coverage: {
+            provider: 'v8',
+            reporter: ['text', 'json', 'html'],
+          },
+        },
+      })`
+                }
+            ]
+        }
+    ];
+
     return (
         <>
             <HeaderComponent
@@ -840,6 +909,90 @@ export const HomeScreen = () => {
                         </AccordionDetails>
                     </Accordion>
                 </Paper>
+                <Box sx={{ maxWidth: 800, mx: 'auto', p: 4 }}>
+                    <Typography variant="h4" component="h1" gutterBottom sx={{
+                        fontWeight: 'bold',
+                        color: theme.palette.primary.main,
+                        mb: 4,
+                        pb: 2,
+                        borderBottom: `1px solid ${theme.palette.divider}`
+                    }}>
+                        Configuración de Vitest para React + TypeScript
+                    </Typography>
+
+                    {codeBlocks.map((block, index) => (
+                        <Accordion
+                            key={block.id}
+                            expanded={expanded === `panel${index + 1}`}
+                            onChange={handleChange(`panel${index + 1}`)}
+                            sx={{ mb: 2 }}
+                        >
+                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                <Typography variant="h6" sx={{ fontWeight: 'medium' }}>
+                                    {index + 1}. {block.title}
+                                </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Typography paragraph sx={{ mb: 2 }}>
+                                    {block.description}
+                                </Typography>
+
+                                {block.commands.map((command) => (
+                                    <Box key={command.id} sx={{ mb: 3 }}>
+                                        <Paper
+                                            elevation={2}
+                                            sx={{
+                                                position: 'relative',
+                                                backgroundColor: theme.palette.mode === 'dark' ? '#1E1E1E' : '#f5f5f5',
+                                                p: 2,
+                                                borderRadius: theme.shape.borderRadius,
+                                                fontFamily: 'monospace',
+                                                whiteSpace: 'pre-wrap',
+                                                wordBreak: 'break-word'
+                                            }}
+                                        >
+                                            {command.code}
+                                            <IconButton
+                                                size="small"
+                                                sx={{
+                                                    position: 'absolute',
+                                                    top: 8,
+                                                    right: 8,
+                                                    color: theme.palette.text.secondary
+                                                }}
+                                                onClick={() => handleCopy(command.code, command.id)}
+                                            >
+                                                {copiedId === command.id ? <CheckCircleOutline fontSize="small" /> : <CopyIcon fontSize="small" />}
+                                            </IconButton>
+                                        </Paper>
+
+                                        <Collapse in={copiedId === command.id}>
+                                            <Alert
+                                                severity="success"
+                                                sx={{ mt: 1, width: 'fit-content' }}
+                                                icon={<CheckCircleOutline fontSize="small" />}
+                                            >
+                                                Código copiado al portapapeles
+                                            </Alert>
+                                        </Collapse>
+                                    </Box>
+                                ))}
+                            </AccordionDetails>
+                            <Divider />
+                        </Accordion>
+                    ))}
+
+                    <Box sx={{ mt: 4, textAlign: 'center' }}>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={() => setExpanded(expanded === false ? 'panel1' : false)}
+                            sx={{ textTransform: 'none' }}
+                        >
+                            {expanded ? 'Colapsar todo' : 'Expandir todo'}
+                        </Button>
+                    </Box>
+                </Box>
             </Container>
         </>
     )

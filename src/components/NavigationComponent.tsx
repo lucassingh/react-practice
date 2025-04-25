@@ -116,7 +116,7 @@ export function NavigationComponent() {
                                     height: 32,
                                     fontSize: '0.875rem'
                                 }}>
-                                    {user?.charAt(0).toUpperCase()}
+                                    {user}
                                 </Avatar>
                                 <Typography variant="subtitle1" sx={{ display: { xs: 'none', sm: 'block' } }}>
                                     {user}
