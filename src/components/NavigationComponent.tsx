@@ -93,6 +93,30 @@ export function NavigationComponent() {
                         >
                             React Advanced
                         </Button>
+                        <Button
+                            color="inherit"
+                            component={Link}
+                            to="/react-observer"
+                            sx={{
+                                my: 2,
+                                display: 'block',
+                                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.08)' }
+                            }}
+                        >
+                            React Observer
+                        </Button>
+                        <Button
+                            color="inherit"
+                            component={Link}
+                            to="/react-observer-map"
+                            sx={{
+                                my: 2,
+                                display: 'block',
+                                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.08)' }
+                            }}
+                        >
+                            React Observer map
+                        </Button>
                     </Box>
 
                     <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center', gap: 2 }}>
